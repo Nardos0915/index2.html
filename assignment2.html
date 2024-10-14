@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="./lab3.js" defer></script> -->
+    <script>
+        function show() {
+            document.getElementById('img1').src = '../HTML/image1.png';
+
+        }
+        function turnoff() {
+            document.getElementById('img1').src = '../HTML/light off.jpg';
+
+        }
+        function display() {
+
+
+
+        }
+
+
+
+
+
+    </script>
+</head>
+
+<body>
+
+    <img id="img1" src="../HTML/image1.png">
+    <div>
+        <button onclick="show()">Turn on the light</button>
+
+        <button onclick="turnoff()">Turn off the light</button>
+
+
+    </div>
+
+    <div>
+        <!-- first-- we need t0 have html tag --- select the tag--- change the inner html of the selected tag
+         
+         <p id="p"></p>
+        
+        
+         document.getElementById("p").innerHtml="nardos"
+        
+        
+        
+    -->
+    </div>
+
+    <h1 id="date">the time is:</h1> <!-- This will display the current time -->
+
+    <script>
+        // Function to update and display the current time
+        function updateTime() {
+            const mydate = new Date(); // Get the current date and time
+
+            // Get hours, minutes, and seconds
+            let hours = mydate.getHours();    // 0-23
+            let minutes = mydate.getMinutes(); // 0-59
+            let seconds = mydate.getSeconds(); // 0-59
+
+            // Determine AM or PM
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+
+            // Convert hours from 24-hour to 12-hour format
+            hours = hours % 12 || 12; // If hour is 0, display 12
+
+            // Add leading zeros to minutes and seconds if needed
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+
+            // Build the time string in H:M:S AM/PM format
+            const timeString = `${hours}:${minutes}:${seconds} ${ampm}`;
+
+            // Update the <h1> element with the current time
+            document.getElementById("date").innerHTML = timeString;
+        }
+
+        // Call updateTime once to display the time immediately
+        updateTime();
+
+        // Update the time every second (1000 milliseconds)
+        setInterval(updateTime, 1000);
+    </script> <br>
+    <h1>Remove First and Last Character</h1>
+    <p id="originalString"></p>
+    <p id="modifiedString"></p>
+
+    <script>
+        // Function to remove the first and last characters from a given string
+        function removeFirstAndLastCharacter(str) {
+            // Check if the string length is greater than 2
+            if (str.length <= 2) {
+                return "String too short!";
+            }
+
+            // Remove the first and last characters
+            const modifiedString = str.slice(1, -1);
+            return modifiedString; // Return the modified string
+        }
+
+        // Example usage
+        const originalString = "be happy always";
+        const modifiedString = removeFirstAndLastCharacter(originalString);
+
+        // Display the original and modified strings on the webpage
+        document.getElementById("originalString").innerText = "Original String: " + originalString;
+        document.getElementById("modifiedString").innerText = "Modified String: " + modifiedString;
+    </script>
+
+</body>
+
+</html>

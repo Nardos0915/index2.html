@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en"> 
+    
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +9,11 @@
     <!-- <script src="./lab3.js" defer></script> -->
     <script>
         function show() {
-            document.getElementById('img1').src = './image1.png';
+            document.getElementById('img1').src = './light.png';
 
         }
         function turnoff() {
-            document.getElementById('img1').src = './light off.jpg';
+            document.getElementById('img1').src = './lightoff.png';
 
         }
         function display() {
@@ -30,7 +31,7 @@
 
 <body>
 
-    <img id="img1" src="./image1.png">
+    <img id="img1" src="./light.png">
     <div>
         <button onclick="show()">Turn on the light</button>
 
@@ -91,26 +92,37 @@
     <p id="originalString"></p>
     <p id="modifiedString"></p>
 
+    <h2>Remove First and Last Characters</h2>
+
+    <label for="inputString">Enter a string:</label>
+    <input type="text" id="inputString" placeholder="Enter a string here" />
+
+    <button id="modifyButton">Remove First and Last Character</button>
+
+    <p id="result">Modified String: </p>
+
     <script>
         // Function to remove the first and last characters from a given string
         function removeFirstAndLastCharacter(str) {
-            // Check if the string length is greater than 2
             if (str.length <= 2) {
                 return "String too short!";
             }
-
-            // Remove the first and last characters
-            const modifiedString = str.slice(1, -1);
-            return modifiedString; // Return the modified string
+            return str.slice(1, -1); // Remove first and last characters
         }
 
-        // Example usage
-        const originalString = "be happy always";
-        const modifiedString = removeFirstAndLastCharacter(originalString);
+        // Add event listener to the button
+        document.getElementById("modifyButton").addEventListener("click", function () {
+            // Get the value from the input field
+            let inputField = document.getElementById("inputString");
+            let originalString = inputField.value;
 
-        // Display the original and modified strings on the webpage
-        document.getElementById("originalString").innerText = "Original String: " + originalString;
-        document.getElementById("modifiedString").innerText = "Modified String: " + modifiedString;
+            // Get the modified string and update the input field
+            let modifiedString = removeFirstAndLastCharacter(originalString);
+            inputField.value = modifiedString; // Replace input with modified string
+
+            // Display the modified string in the result paragraph
+            document.getElementById("result").innerText = "Modified String: " + modifiedString;
+        });
     </script>
 
 </body>
